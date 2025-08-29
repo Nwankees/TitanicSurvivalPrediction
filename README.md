@@ -17,17 +17,35 @@ A machine learning project that predicts passenger survival on the Titanic datas
 ## How to Run
 1. Clone this repo
 2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-3.  Open the notebook:
-    ```bash
-    jupyter notebook notebooks/Titanic.ipynb
-    ```
+    
+        pip install -r requirements.txt
+
+3. Open the notebook:
+    
+        jupyter notebook notebooks/Titanic.ipynb
 
 ## Results
 
-* Achieved ~80% accuracy with Logistic Regression
-* Tree-based models (Random Forest, XGBoost) achieve up to ~83%
-* Feature engineering improves performance (FamilySize, Cabin info, etc.)
+Using 5-fold cross-validation:
+
+- **Logistic Regression** → ~78% accuracy  
+  * Best params: `C=0.046`, imputer strategy=`median`
+
+- **Decision Tree** → ~79% accuracy  
+  * Best params: `max_depth=10`, `min_samples_split=2`
+
+- **Random Forest** → ~81% accuracy  
+  * Best params: `n_estimators=100`, `max_depth=10`
+
+- **XGBoost** → ~81% accuracy  
+  * Best params: `n_estimators=200`, `max_depth=3`, `learning_rate=0.2`
+
+📊 Among these, **XGBoost performed the best** with ~81.1% accuracy.
+
+## Model Evaluation
+
+Confusion matrix for the best model (XGBoost):
+
+![Confusion Matrix](notebooks/confusion_matrix.png)
 
 ---
